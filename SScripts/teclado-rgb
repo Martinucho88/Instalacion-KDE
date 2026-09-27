@@ -1,0 +1,63 @@
+#!/bin/bash
+
+COLOR_PATH="/sys/devices/platform/omen-rgb-keyboard/rgb_zones/all"
+BRIGHT_PATH="/sys/devices/platform/omen-rgb-keyboard/rgb_zones/brightness"
+
+function aplicar() {
+    local color=$1
+    local brillo=$2
+
+    echo "$color" | sudo tee "$COLOR_PATH" > /dev/null
+    echo "$brillo" | sudo tee "$BRIGHT_PATH" > /dev/null
+
+    echo "✔ Color aplicado: #$color"
+    echo "✔ Brillo aplicado: $brillo"
+}
+
+function menu_colores() {
+    echo "=== COLORES PREDEFINIDOS ==="
+    echo "1) Verde  (00FF66)"
+    echo "2) Rojo   (FF0000)"
+    echo "3) Azul   (0066FF)"
+    echo "4) Morado (9900FF)"
+    echo "5) Amarillo (FFFF00)"
+    echo "6) Blanco (FFFFFF)"
+    echo "7) Personalizado"
+
+    read -p "Elige un color: " opcion
+
+    case $opcion in
+        1) COLOR="00FF66" ;;
+        2) COLOR="FF0000" ;;
+        3) COLOR="0066FF" ;;
+        4) COLOR="9900FF" ;;
+        5) COLOR="FFFF00" ;;
+        6) COLOR="FFFFFF" ;;
+        7)
+            read -p "Ingresa color HEX (ej: 00FF66): " COLOR
+            ;;
+        *)
+            echo "Opción inválida"
+            exit 1
+            ;;
+    esac
+}
+
+function menu_brillo() {
+    echo "=== BRILLO ==="
+    echo "0 - 100 (recomendado entre 20 y 100)"
+    read -p "Ingresa intensidad: " BRILLO
+
+    # validación simple
+    if ! [[ "$BRILLO" =~ ^[0-9]+$ ]] || [ "$BRILLO" -lt 0 ] || [ "$BRILLO" -gt 100 ]; then
+        echo "Brillo inválido"
+        exit 1
+    fi
+}
+
+# ---- EJECUCIÓN ----
+echo "🖥️ Control RGB teclado OMEN"
+
+menu_colores
+menu_brillo
+aplicar "$COLOR" "$BRILLO"

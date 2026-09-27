@@ -1,0 +1,11 @@
+#!/bin/bash
+
+kscreen-doctor \
+output.eDP-1.disable \
+output.DP-1.enable \
+output.DP-2.enable \
+output.DP-1.mode.17 \
+output.DP-2.mode.1 \
+output.DP-2.primary \
+output.DP-2.position.0,0 \
+output.DP-1.position.1920,0

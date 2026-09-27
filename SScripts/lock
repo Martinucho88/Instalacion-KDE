@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo ethtool -s eno1 wol g
+echo enabled | sudo tee /sys/class/net/eno1/device/power/wakeup
+
+loginctl lock-session

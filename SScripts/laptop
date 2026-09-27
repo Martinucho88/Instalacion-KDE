@@ -1,0 +1,6 @@
+#!/bin/bash
+
+kscreen-doctor \
+output.DP-1.disable \
+output.eDP-1.enable \
+output.eDP-1.primary
