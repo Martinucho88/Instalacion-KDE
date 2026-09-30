@@ -123,3 +123,13 @@ alias upd="sudo pacman -Syu --noconfirm"
 eval "$(starship init zsh)"
 
 fastfetch -c examples/23.jsonc
+
+
+# Crear alias automáticos para todos los scripts en /usr/local/sbin
+if [ -d "/usr/local/sbin" ]; then
+    for script in /usr/local/sbin/*; do
+        if [ -x "$script" ] && [ -f "$script" ]; then
+            alias "$(basename "$script")"="sudo $script"
+        fi
+    done
+fi

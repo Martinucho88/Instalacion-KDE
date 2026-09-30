@@ -1,9 +1,0 @@
-#!/bin/bash
-
-kscreen-doctor \
-output.eDP-1.disable \
-output.DP-2.enable \
-output.DP-1.disable \
-output.DP-2.mode.1 \
-output.DP-2.primary
-
