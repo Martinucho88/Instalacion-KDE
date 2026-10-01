@@ -191,3 +191,5 @@ systemctl --user enable pipewire pipewire-pulse wireplumber
 systemctl --user start pipewire pipewire-pulse wireplumber
 
 starship preset gruvbox-rainbow -o ~/.config/starship.toml
+
+flatpak install com.stremio.Stremio
