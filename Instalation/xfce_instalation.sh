@@ -123,7 +123,8 @@ yay -S --noconfirm \
 	spotify \
 	visual-studio-code-bin \
 	omen-rgb-keyboard-dkms-git \
-	envycontrol
+	envycontrol \
+	volctl
 echo -e "\033[35m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m"
 
 #Levantar servicios bluetooth
